@@ -15,43 +15,44 @@ public class RegistrationPage extends BrowserUtils {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "newUser green")
+    @FindBy(xpath = "//*[@href= '/sign-up.shtml']")
     WebElement JOIN_NOW_BTN;
-    @FindBy(className = "title required")
+    @FindBy(id = "title")
     WebElement TITLE;
     @FindBy(id = "forename")
     WebElement FIRST_NAME;
     @FindBy(xpath = "//input[@name='map(lastName)']")
     WebElement SURNAME;
-    @FindBy(className = "dobDay inline required")
+    @FindBy(id= "dobDay")
     WebElement BIRTH_DAY;
-    @FindBy(className = "dobMonth inline required")
+    @FindBy(id = "dobMonth")
     WebElement BIRTH_MONTH;
-    @FindBy(className = "dobYear inline required")
+    @FindBy(id = "dobYear")
     WebElement BIRTH_YEAR;
-    @FindBy(xpath = "/html/body/noscript/text()")
+    @FindBy(name = "map(terms)")
     WebElement TICKBOX;
-    @FindBy(className = "promoReg green")
+    @FindBy(id = "form")
     WebElement JOIN_BTN;
-    @FindBy(css = "[for='dob']")
+    @FindBy(xpath = "//label[@for='dob']")
     WebElement ERROR_LABEL;
 
 
-    WebElement iframe;
+
 
 
     public void clickOnJoinNowButton() {
 
-        clickWithWait(JOIN_NOW_BTN);
+        clickWithJS(JOIN_NOW_BTN);
 
     }
 
     public void selectTitle() {
         Select select = new Select(TITLE);
-        select.selectByVisibleText("Ms");
+        select.selectByVisibleText("Mr");
     }
 
-    public void enterFirstName() {
+    public void enterFirstName()  {
+
         enterText(FIRST_NAME, "Ali");
     }
 
@@ -66,20 +67,21 @@ public class RegistrationPage extends BrowserUtils {
     public void clickOnJoinButton () {
         clickWithWait(JOIN_BTN);
     }
-
-    public void BirthYear() {
-        Select select = new Select(BIRTH_YEAR);
-        select.selectByVisibleText("1980");
-    }
-
-    public void BirthMonth() {
-        Select select = new Select(BIRTH_MONTH);
-        select.selectByVisibleText("10");
-    }
     public void selectBirthDay() {
         Select select = new Select(BIRTH_DAY);
         select.selectByVisibleText("12");
     }
+    public void selectBirthMonth() {
+        Select select = new Select(BIRTH_MONTH);
+        select.selectByVisibleText("July");
+    }
+    public void selectBirthYear() {
+        Select select = new Select(BIRTH_YEAR);
+        select.selectByVisibleText("1980");
+    }
+
+
+
     public void getERROR_LABEL () {
         Assert.assertEquals("This field is required", ERROR_LABEL.getText());
     }
