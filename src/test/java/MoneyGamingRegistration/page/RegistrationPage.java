@@ -52,12 +52,11 @@ public class RegistrationPage extends BrowserUtils {
     }
 
     public void enterFirstName()  {
-
         enterText(FIRST_NAME, "Ali");
     }
 
     public void enterSurname() {
-        enterText(SURNAME, "Pek");
+        enterText(SURNAME, "Pektemirli");
     }
 
     public void clickTickBoxButton () {
